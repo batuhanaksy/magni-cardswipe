@@ -1,0 +1,233 @@
+* {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+body {
+  position: absolute;
+  left: 30%;
+  color: white;
+  transform: translateY(-80%);
+  background-color: var(--primary);
+  transform:translate(-50%,-50%);
+  -webki-transform:translate(-50%,-50%);
+  top:50%;
+  left:50%;
+}
+
+#wrapper {
+  position: relative;
+  width: 400px;
+  height: 390px;
+}
+
+#cuzdan {
+    position: absolute;
+    width: 100%;
+    height: 41%;
+    left: -0.2vh;
+    display: inline-block;
+    background-size: 100%; 
+    background-position-x: center;
+    background-repeat: no-repeat;
+    bottom:-1vh; 
+    right:0px;
+    background-image: url('../html/src/wallet.png');
+}
+
+#reader {
+  width: 100%;
+  height: 400px;
+}
+
+#reader .top {
+  position: relative;
+  width: 100%;
+  height: 125px;
+  z-index: 100;
+}
+
+#reader .bottom {
+  width: 100%;
+  height: 75px;
+}
+
+#reader .lights {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.light {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+}
+
+#card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  margin-top: -75px;
+  width: 250px;
+  height: 150px;
+  transform: translateX(-125px);
+}
+
+#card.slide {
+  transition: transform 1s;
+}
+
+#wrapper {
+  background-color: #414141;
+  border: 4px solid #000;
+}
+
+#reader .top,
+#reader .bottom {
+  background-color: #adadad;
+  border: 4px solid #000;
+}
+
+#reader .top {
+  width: calc(100% + 8px);
+  padding: 16px;
+  margin: -4px 0 0 -3px;
+}
+
+#reader .top:before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  bottom: 12px;
+  width: 140px; 
+  height: 10px; 
+  background-color: #000;
+}
+
+#reader .top:after {
+  content: "";
+  position: absolute;
+  left: 150px;
+  bottom: 12px;
+  width: 0; 
+  height: 0; 
+  border-bottom: 30px solid #000;
+  border-right: 60px solid transparent;
+}
+
+#reader .bottom {
+  width: calc(100% + 8px);
+  margin: 10px 0 0 -4px;
+  border-top-left-radius: 30px;
+  box-shadow: inset -6px -6px #555555,
+  inset 6px 6px #555555,
+  0 30px rgba(0, 0, 0, 0.1);
+}
+
+#reader .screen {
+  border: 4px solid #000;
+  padding: 4px;
+  margin: 0 12px;
+  background-color: #164a38;
+}
+
+#message {
+  font-family: 'DSEG14Classic', sans-serif;
+  font-size: 20px;
+  color: #c5d6d0;
+  text-transform: uppercase;
+  animation: jitter 3s infinite steps(2);
+}
+
+#message:after {
+  content: "Please swipe card";
+}
+
+[data-status="invalid"] #message:after {
+  content: "Bad read. Try again.";
+}
+
+[data-status="slow"] #message:after {
+  content: "Too slow. Try again.";
+}
+
+[data-status="fast"] #message:after {
+  content: "Too fast. Try again.";
+}
+
+[data-status="valid"] #message:after {
+  content: "Accepted. Thank you.";
+}
+
+.light {
+  border: 4px solid #000;
+  border-radius: 50%;
+  box-shadow: 0 4px #555555;
+  filter: saturate(0.6) brightness(0.7);
+}
+
+.red {
+  background-color: #f52818;
+}
+
+.green {
+  background-color: #3dd022;
+}
+
+[data-status="invalid"] .red,
+[data-status="slow"] .red,
+[data-status="fast"] .red,
+[data-status="valid"] .green {
+  filter: none;
+}
+
+#card {
+  background-color: #dfdfdf;
+  border: 2px solid #7f7f7f;
+  border-radius: 15px;
+  cursor: grab;
+}
+
+#photo {
+  position: relative;
+  width: 75px;
+  height: 100px;
+  background-color: #aeaeae;
+  border: 2px solid #292929;
+  margin-left: 16px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#photoici {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  background-size: 100%; 
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-image: url('../html/src/char.png');
+}
+
+@font-face {
+  font-family: 'DSEG14Classic';
+  src: url('https://thomaspark.co/projects/among-us-card-swipe/fonts/DSEG14-Classic/DSEG14Classic-Regular.woff2') format('woff2'),
+       url('https://thomaspark.co/projects/among-us-card-swipe/fonts/DSEG14-Classic/DSEG14Classic-Regular.woff') format('woff'),
+       url('https://thomaspark.co/projects/among-us-card-swipe/fonts/DSEG14-Classic/DSEG14Classic-Regular.ttf')  format('truetype');
+}
+
+@keyframes jitter {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(5px);
+  }
+}
